@@ -1,7 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<h2>form</h2>
-
 <div class="container">
      
     <div class="panel panel-primary">
@@ -26,25 +24,24 @@
                 </ul>
             </div>
         @endif
-    
+       
+
         {!! Form::open(['action' => 'App\Http\Controllers\PostController@store','method'=>'POST']) !!}
     <div class="col-md-6 "> 
         <div clss="form-group">
         {!! Form::label('FileImg') !!}
         {!! Form::file('FileImg',null,["class"=>"form-control"])!!}
         </div>
+       
 
         <div clss="form-group">
         {!! Form::label('PostMes') !!}
         {!! Form::textarea('PostMes',null,["class"=>"form-control"])!!}
         </div>
 
-        <!-- <div clss="form-group">
-        {!! Form::label('username') !!}
-        {!! Form::text('username',null,["class"=>"form-control"])!!}
-        </div> -->
 
-        <br><input type="submit" value="บันทึก" class="btn btn-primary">
+
+        <br><input type="submit" value="โพสต์" class="btn btn-primary">
         <a href="/post" class="btn btn-success">กลับ</a>
     </div>
 

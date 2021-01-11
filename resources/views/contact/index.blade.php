@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-<h2 align="center">ข้อมูลการติดต่อลูกค้า</h2>
+<h2 align="center">ข้อมูลการผู้ใช้</h2>
 <a href="/contact/create" class="btn btn-primary">เพิ่มข้อมูล</a>
 <table class="table">
   <thead>

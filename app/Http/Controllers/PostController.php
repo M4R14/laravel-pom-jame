@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\post;
 use App\Models\comment;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -50,7 +51,16 @@ class PostController extends Controller
         //     'phone'=>'required'
         // ]);
 
-        post::create($request->all());
+
+
+        post::create([
+            
+            'FileImg' => $request->FileImg,
+            'PostMes'  => $request->PostMes,
+            'username' => Auth::id(),
+        ]);
+
+
         return redirect('/post');
     }
 
@@ -67,7 +77,8 @@ class PostController extends Controller
         $data=post::find($id);
         return view('Post.PostComment',compact(['data']),[
             'user' => post::findOrFail($id),
-            'commentData' => comment::where('post_holder', $id)->get()
+            'commentData' => comment::where('post_holder', $id)->get(),
+            'userComment' => User::all()
         ]);
     }
 

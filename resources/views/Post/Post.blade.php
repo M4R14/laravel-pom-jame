@@ -1,14 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<h1>Post</h1>
 
-<a href="/post/create" class="btn btn-primary">เพิ่มข้อมูล</a>
+<center><a href="/post/create" class="btn btn-primary">เพิ่มโพสต์</a><center>
 
 
-<div class="container">
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="container mt-5">
+<div class="row row-cols-1 row-cols-md-3 g-4 ">
 @foreach($data as $row)
-  <div class="col">
+  <div class="col mt-3">
  
   <a href="{{route('post.show',$row->id)}}" >
 <div  class="card h-100 commentPost">
@@ -25,4 +24,6 @@
 
 </div>
 </div>
+
+
 @endsection

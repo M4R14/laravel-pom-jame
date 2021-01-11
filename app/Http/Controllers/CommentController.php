@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\comment;
-use Illuminate\Support\Facades\Auth;
-class CommentpostController extends Controller
+
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,8 @@ class CommentpostController extends Controller
      */
     public function index()
     {
-        // $data2 = comment::all();
-        // $data=post::find($id);
-        // return view('Post.PostComment',compact(['data']),[
-        //     'user' => post::findOrFail($id)
-        //     'commentData' => post::findOrFail($id)
-        // ]);
+        $data = comment::all();
+        return view('post.Post',compact(['data']));
     }
 
     /**
@@ -29,7 +25,7 @@ class CommentpostController extends Controller
      */
     public function create()
     {
-     
+        //
     }
 
     /**
@@ -40,20 +36,9 @@ class CommentpostController extends Controller
      */
     public function store(Request $request)
     {
-
-        $validated = $request->validate([
-            'commentMes' => 'required',
-        ]);
-
-                comment::create([
-            
-                'commentMes' => $request->commentMes,
-                'post_holder'  => $request->post_holder,
-                'comment_holder' => Auth::id(),
-            ]);
-            return redirect('/post');
-        
-     }
+ 
+        comment::create($request->all());
+    }
 
     /**
      * Display the specified resource.
