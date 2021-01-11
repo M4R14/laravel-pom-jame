@@ -14,7 +14,12 @@ class CommentpostController extends Controller
      */
     public function index()
     {
-        //
+        // $data2 = comment::all();
+        // $data=post::find($id);
+        // return view('Post.PostComment',compact(['data']),[
+        //     'user' => post::findOrFail($id)
+        //     'commentData' => post::findOrFail($id)
+        // ]);
     }
 
     /**
@@ -35,6 +40,10 @@ class CommentpostController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validated = $request->validate([
+            'commentMes' => 'required',
+        ]);
 
                 comment::create([
             

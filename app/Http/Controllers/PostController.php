@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\post;
+use App\Models\comment;
+
 
 class PostController extends Controller
 {
@@ -60,10 +62,12 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        
+       
+        // return view('comment.PostComment',compact(['data']));
         $data=post::find($id);
         return view('Post.PostComment',compact(['data']),[
-            'user' => post::findOrFail($id)
+            'user' => post::findOrFail($id),
+            'commentData' => comment::where('post_holder', $id)->get()
         ]);
     }
 

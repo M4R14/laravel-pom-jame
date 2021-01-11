@@ -1,4 +1,3 @@
-<h1>Postcomment</h1>
 
 @extends('layouts.app')
 @section('content')
@@ -13,6 +12,12 @@
 </ul>
 @endif
 {{ $user->FileImg }}
+<br>
+@foreach($commentData as $row)
+{{ $row->commentMes }}
+@endforeach
+
+
 {!! Form::open(['action' => ['App\Http\Controllers\CommentpostController@store',$data->id],'method'=>'POST']) !!}
     <div class="col-md-6 "> 
         <div clss="form-group">
@@ -20,21 +25,9 @@
         {!! Form::text('commentMes',null,["class"=>"form-control"])!!}
         </div>
 
-        {!! Form::text('post_holder',$user->id,["class"=>"form-control"])!!}
-
-        <!-- <div clss="form-group">
-        {!! Form::label('post_holder') !!}
-        {!! Form::text('post_holder',null,["class"=>"form-control"])!!}
-        </div>
-        
-        <div clss="form-group">
-
-        {!! Form::label('comment_holder') !!}
-        {!! Form::text('comment_holder',null,["class"=>"form-control"])!!}
-        </div> -->
-
+        {!! Form::hidden('post_holder',$user->id,["class"=>"form-control"])!!}
         <input type="submit" value="comment" class="btn btn-primary">
-        <a href="/contact" class="btn btn-success">กลับ</a>
+        <a href="/post" class="btn btn-success">กลับ</a>
     </div>
 
 {!! Form::close() !!}
