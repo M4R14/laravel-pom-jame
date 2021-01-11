@@ -1,9 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
+    console.log('sad');
 
-    $('.deleteForm').click(function(evt){
-evt.preventDefault();
-swal({
-    title:"คุณต้องการลบข้อมูลหรือไม่"
-})
-    });
 });
