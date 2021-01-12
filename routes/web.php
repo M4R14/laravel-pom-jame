@@ -21,3 +21,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('contact', 'App\Http\Controllers\ContactController');
+// Route::get('/post', [App\Http\Controllers\PostController::class, 'index']);
+
+Route::resource('post', 'App\Http\Controllers\PostController');
+Route::resource('comment', 'App\Http\Controllers\CommentpostController');
+// Route::get('/post/{id}', [App\Http\Controllers\PostController::class, 'show']);
+
